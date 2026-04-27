@@ -1,3 +1,6 @@
+# Originally forked from https://github.com/wallago/nix-system-services-hardened
+# Changes should be downstreamed
+{ ... }:
 {
   systemd.services.accounts-daemon.serviceConfig = {
     NoNewPrivileges = true;

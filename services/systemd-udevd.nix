@@ -1,3 +1,6 @@
+# Originally forked from https://github.com/wallago/nix-system-services-hardened
+# Changes should be downstreamed
+{ ... }:
 {
   systemd.services.systemd-udevd.serviceConfig = {
     NoNewPrivileges = true;
@@ -5,7 +8,7 @@
     ProtectHome = true;
     ProtectKernelLogs = true;
     ProtectControlGroups = true;
-    ProtectClock = true; 
+    ProtectClock = true;
     ProtectProc = "invisible";
     RestrictNamespaces = true;
     CapabilityBoundingSet = "~CAP_SYS_PTRACE ~CAP_SYS_PACCT";

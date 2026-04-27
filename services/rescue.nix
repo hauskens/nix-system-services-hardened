@@ -1,21 +1,24 @@
+# Originally forked from https://github.com/wallago/nix-system-services-hardened
+# Changes should be downstreamed
+{ ... }:
 {
   systemd.services.rescue.serviceConfig = {
     NoNewPrivileges = true;
     ProtectSystem = "full";
-    ProtectClock = true; 
+    ProtectClock = true;
     ProtectHostname = true;
     ProtectKernelTunables = true;
     ProtectKernelModules = true;
     ProtectKernelLogs = true;
-    ProtectControlGroups = true; 
+    ProtectControlGroups = true;
     ProtectProc = "invisible";
     PrivateTmp = true;
     PrivateNetwork = true;
     RestrictNamespaces = true;
     RestrictRealtime = true;
     RestrictSUIDSGID = true;
-    RestrictAddressFamilies = [ 
-      "~AF_INET6"  
+    RestrictAddressFamilies = [
+      "~AF_INET6"
       "~AF_INET"
       "~AF_PACKET"
     ];
@@ -29,7 +32,7 @@
       "~@resources"
     ];
     SystemCallArchitectures = "native";
-    CapabilityBoundingSet= [
+    CapabilityBoundingSet = [
       "~CAP_CHOWN"
       "~CAP_FSETID"
       "~CAP_SETFCAP"

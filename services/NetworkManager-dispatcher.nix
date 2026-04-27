@@ -1,3 +1,6 @@
+# Originally forked from https://github.com/wallago/nix-system-services-hardened
+# Changes should be downstreamed
+{ ... }:
 {
   systemd.services.NetworkManager-dispatcher.serviceConfig = {
     NoNewPrivileges = true;
@@ -6,14 +9,14 @@
     ProtectKernelModules = true;
     ProtectKernelLogs = true;
     ProtectControlGroups = true;
-    ProtectClock = true; 
+    ProtectClock = true;
     ProtectHostname = true;
     ProtectProc = "invisible";
     PrivateTmp = true;
     PrivateMounts = true;
     RestrictRealtime = true;
-    RestrictAddressFamilies = [ 
-      "AF_UNIX" 
+    RestrictAddressFamilies = [
+      "AF_UNIX"
       "AF_NETLINK"
       "AF_INET"
       "AF_INET6"
@@ -24,14 +27,14 @@
     MemoryDenyWriteExecute = true;
     SystemCallFilter = [
       "~@mount"
-      "~@module" 
+      "~@module"
       "~@swap"
-      "~@obsolete" 
-      "~@cpu-emulation" 
+      "~@obsolete"
+      "~@cpu-emulation"
       "ptrace"
     ];
     SystemCallArchitectures = "native";
-    LockPersonality= true; 
+    LockPersonality = true;
     CapabilityBoundingSet = "CAP_NET_ADMIN CAP_NET_RAW";
   };
 }

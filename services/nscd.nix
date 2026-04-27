@@ -1,11 +1,14 @@
+# Originally forked from https://github.com/wallago/nix-system-services-hardened
+# Changes should be downstreamed
+{ ... }:
 {
   systemd.services.nscd.serviceConfig = {
-    ProtectClock = true; 
+    ProtectClock = true;
     ProtectHostname = true;
     ProtectKernelTunables = true;
     ProtectKernelModules = true;
     ProtectKernelLogs = true;
-    ProtectControlGroups = true; 
+    ProtectControlGroups = true;
     ProtectProc = "invisible";
     RestrictNamespaces = true;
     RestrictRealtime = true;
@@ -19,7 +22,7 @@
       "~@cpu-emulation"
     ];
     SystemCallArchitectures = "native";
-    CapabilityBoundingSet= [
+    CapabilityBoundingSet = [
       "~CAP_CHOWN"
       "~CAP_FSETID"
       "~CAP_SETFCAP"

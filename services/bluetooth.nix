@@ -1,10 +1,13 @@
+# Originally forked from https://github.com/wallago/nix-system-services-hardened
+# Changes should be downstreamed
+{ ... }:
 {
   systemd.services.bluetooth.serviceConfig = {
     ProtectKernelTunables = true;
     ProtectKernelModules = true;
     ProtectKernelLogs = true;
     ProtectHostname = true;
-    ProtectControlGroups = true; 
+    ProtectControlGroups = true;
     ProtectProc = "invisible";
     SystemCallFilter = [
       "~@obsolete"

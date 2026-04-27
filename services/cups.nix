@@ -1,10 +1,13 @@
+# Originally forked from https://github.com/wallago/nix-system-services-hardened
+# Changes should be downstreamed
+{ ... }:
 {
   systemd.services.cups.serviceConfig = {
     NoNewPrivileges = true;
     ProtectSystem = "full";
     ProtectHome = true;
     ProtectKernelModules = true;
-    ProtectKernelTunables = true; 
+    ProtectKernelTunables = true;
     ProtectKernelLogs = true;
     ProtectControlGroups = true;
     ProtectHostname = true;
@@ -13,8 +16,8 @@
     RestrictRealtime = true;
     RestrictNamespaces = true;
     RestrictSUIDSGID = true;
-    RestrictAddressFamilies = [ 
-      "AF_UNIX" 
+    RestrictAddressFamilies = [
+      "AF_UNIX"
       "AF_NETLINK"
       "AF_INET"
       "AF_INET6"
@@ -28,10 +31,10 @@
       "~@debug"
       "~@module"
       "~@swap"
-      "~@obsolete" 
-      "~@cpu-emulation" 
+      "~@obsolete"
+      "~@cpu-emulation"
     ];
     SystemCallArchitectures = "native";
-    LockPersonality= true; 
+    LockPersonality = true;
   };
 }

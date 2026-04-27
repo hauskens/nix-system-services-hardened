@@ -1,9 +1,12 @@
+# Originally forked from https://github.com/wallago/nix-system-services-hardened
+# Changes should be downstreamed
+{ ... }:
 {
   systemd.services.systemd-machined.serviceConfig = {
     NoNewPrivileges = true;
     ProtectSystem = "strict";
     ProtectHome = true;
-    ProtectClock = true; 
+    ProtectClock = true;
     ProtectHostname = true;
     ProtectKernelTunables = true;
     ProtectKernelModules = true;
