@@ -1,3 +1,6 @@
+# Originally forked from https://github.com/wallago/nix-system-services-hardened
+# Changes should be downstreamed
+{ ... }:
 {
   systemd.services.nix-daemon.serviceConfig = {
     NoNewPrivileges = true;
@@ -9,13 +12,13 @@
     RestrictSUIDSGID = true;
     RestrictRealtime = true;
     RestrictNamespaces = [ "~cgroup" ];
-    RestrictAddressFamilies = [ 
+    RestrictAddressFamilies = [
       "AF_UNIX"
       "AF_NETLINK"
-      "AF_INET6"  
+      "AF_INET6"
       "AF_INET"
     ];
-    CapabilityBoundingSet= [ 
+    CapabilityBoundingSet = [
       "~CAP_SYS_CHROOT"
       "~CAP_BPF"
       "~CAP_AUDIT_WRITE"
@@ -25,17 +28,17 @@
       "~CAP_SYS_NICE"
       "~CAP_SYS_RESOURCE"
       "~CAP_SYS_RAWIO"
-      "~CAP_SYS_TIME" 
-      "~CAP_SYS_PACCT" 
-      "~CAP_LINUX_IMMUTABLE" 
-      "~CAP_IPC_LOCK" 
-      "~CAP_WAKE_ALARM" 
-      "~CAP_SYS_TTY_CONFIG" 
-      "~CAP_SYS_BOOT" 
-      "~CAP_LEASE" 
-      "~CAP_BLOCK_SUSPEND" 
-      "~CAP_MAC_ADMIN" 
-      "~CAP_MAC_OVERRIDE" 
+      "~CAP_SYS_TIME"
+      "~CAP_SYS_PACCT"
+      "~CAP_LINUX_IMMUTABLE"
+      "~CAP_IPC_LOCK"
+      "~CAP_WAKE_ALARM"
+      "~CAP_SYS_TTY_CONFIG"
+      "~CAP_SYS_BOOT"
+      "~CAP_LEASE"
+      "~CAP_BLOCK_SUSPEND"
+      "~CAP_MAC_ADMIN"
+      "~CAP_MAC_OVERRIDE"
     ];
     SystemCallErrorNumber = "EPERM";
     SystemCallArchitectures = "native";
@@ -51,7 +54,6 @@
       "~@raw-io"
     ];
     LockPersonality = true;
-    MemoryDenyWriteExecute = true;
     DevicePolicy = "closed";
     UMask = 0077;
   };
